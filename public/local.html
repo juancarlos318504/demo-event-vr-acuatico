@@ -1,0 +1,44 @@
+<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local</title><script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.4.0/socket.io.slim.js"></script><script src="../easyrtc/easyrtc.js"></script><script src="/assets/js/aframe-imports.f5b731e79aa627bd088b.js"></script><script src="/assets/js/naf-imports.237e5d4185746e09cd30.js"></script><script src="/assets/js/local.b82c8222d6961348c5ab.js"></script></head><body><div id="root-3D" style="position:absolute;width:100vw;height:100vh"><a-scene id="local-scene" stats="false" embedded physics="driver: ammo; debug: false; debugDrawMode: 1;" keyboard-shortcuts="enterVR: false" vr-mode-ui="enabled: false;" light="defaultLightsEnabled: true" renderer="
+                antialias: true;
+                colorManagement: true;
+                sortObjects: true;
+                physicallyCorrectLights: false;
+                alpha: true;" networked-scene="
+                debug: false;
+                room: dev-local;
+                debug: true;
+                adapter: easyrtc;
+                connectOnLoad: false;" scene-loader><a-assets timeout="600000" id="aframe-assets"><a-asset-item id="model-asset-local-1" response-type="arraybuffer" src="/assets/media/Local_1-6d846a3a60b78a04a920.glb"></a-asset-item><a-asset-item id="model-asset-local-2" response-type="arraybuffer" src="/assets/media/Local_2-755c5ddcb396c0fadf4f.glb"></a-asset-item><a-asset-item id="model-asset-local-3" response-type="arraybuffer" src="/assets/media/Local_3-d2714baceab795355b65.glb"></a-asset-item><a-asset-item id="model-asset-shelf-1" response-type="arraybuffer" src="/assets/media/Estante1-b79e49504ff13b9ce3ae.glb"></a-asset-item><a-asset-item id="model-asset-shelf-2" response-type="arraybuffer" src="/assets/media/Estante2-64c6b74381f36cda07ff.glb"></a-asset-item><a-asset-item id="model-asset-shelf-3" response-type="arraybuffer" src="/assets/media/Estante3-455e09ebcc5d2050badb.glb"></a-asset-item><a-asset-item id="model-asset-shopping-cart" response-type="arraybuffer" src="/assets/media/carrito-c6911cce0c1212295b98.glb"></a-asset-item><a-asset-item id="model-asset-personaje-mujer" response-type="arraybuffer" src="/assets/media/mujer_animaciones-136e43aeb99f1bb284d2.glb"></a-asset-item><a-asset-item id="model-asset-personaje-hombre" response-type="arraybuffer" src="/assets/media/hombre_animaciones-2963395b1cd4e8c00d26.glb"></a-asset-item><img id="sky-image" src="/assets/media/sky-cielo-45d73ffa044c38970139.jpg"><template id="avatar-template"><a-entity class="avatar"><a-entity class="naf-avatar-name" position="0 2.1 0" scale="5 5 5" text="value: Nombre; align:center; font:mozillavr; width:0.5; wrapCount:20" look-at="#player-camera"></a-entity><a-entity class="naf-avatar-model" scale="50 50 50" gltf-model><a-entity id="shopping-cart-model" class="naf-shopping-cart-model" gltf-model="#model-asset-shopping-cart" shopping-cart-materials position="0 0 0.02"></a-entity></a-entity></a-entity></template></a-assets><a-entity id="local-model" load-glb-collision-disabled="
+                    model:#model-asset-local-2; 
+                    body:static; 
+                    shape:mesh" local-materials scale="1 1 1" rotation="0 0 0" position="0 0 0"></a-entity><a-entity scale="1 1 1" id="instancias-gondolas-1"></a-entity><a-entity scale="1 1 1" id="instancias-gondolas-2"></a-entity><a-entity scale="1 1 1" id="instancias-gondolas-3"></a-entity><a-entity id="shelfs-3D-container"></a-entity><a-entity id="player-camera" camera="active: true; fov: 80; zoom: 1; far:100;" position="0 2 0" joystick orbit-controls="
+                    enablePan:false;
+                    enableKeys:false;
+                    autoRotate: false;
+                    target: #player-head;
+                    enableDamping: true;
+                    dampingFactor: 0.125;
+                    rotateSpeed:0.25;
+                    minPolarAngle:0.3;
+                    maxPolarAngle:1.7;
+                    minDistance:2;
+                    maxDistance:3;
+                    enableZoom:true;
+                    minZoom:-3;
+                    maxZoom:30;
+                    zoomSpeed:2;"></a-entity><a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="far: 10; objects: .clickable"></a-entity><a-sphere primitive="a-sphere" id="player-head" follow-entity="target: #player-entity; offsetY: 1.6" position="0 0 0" visible="false" color="yellow" radius=".2"></a-sphere><a-entity id="player-entity" ammo-body="
+                    type: dynamic; 
+                    linearDamping:0; 
+                    angularDamping:1; 
+                    angularFactor: 0 0 0; 
+                    activationState: disableDeactivation;
+                    emitCollisionEvents: false;" ammo-shape="
+                    type: capsule; 
+                    fit: manual; 
+                    halfExtents:.2 .6 .2; 
+                    offset:0 .8 0" movement-controls-super="
+                    speed:2.5; 
+                    camera:#player-camera;
+                    characterModel:#player-model;
+                    animationIdle:cart_idle;
+                    animationWalking:cart_walking" position="0 0.3 0" networked="template:#avatar-template; attachTemplateToLocal:false;"><a-entity id="player-text-name" class="naf-avatar-name" position="0 2.1 0" scale="5 5 5" visible="false" text="value: Nombre; align:center; font:mozillavr; width:0.5; wrapCount:20"></a-entity><a-entity id="player-model" class="naf-avatar-model" animation-mixer="clip:idle; crossFadeDuration:0.2" scale="50 50 50" position="0 0 0" rotation="0 0 0"><a-entity id="shopping-cart-model" class="naf-shopping-cart-model" gltf-model="#model-asset-shopping-cart" shopping-cart-materials scale="1 1 1" shopping-cart-events rotation="0 0 0" position="0 0 0.02"><a-entity id="contenedor-productos-carrito"><a-box class="entity-cart-product" visible="false" position="0 0.00798 0.00554" depth="0.006" height="0.002" width="0.003" material=""></a-box><a-box class="entity-cart-product" visible="false" position="-0.002 0.008 -0.002" depth="0.004" height="0.003" width="0.002" material=""></a-box><a-box class="entity-cart-product" visible="false" position="0.00109 0.00866 -0.002" rotation="0 0 37.954" depth="0.007" height="0.005" width="0.002"></a-box><a-box class="entity-cart-product" visible="false" position="0.00109 0.0094 -0.002" rotation="0 0 37.954" depth="0.007" height="0.005" width="0.002"></a-box><a-box class="entity-cart-product" visible="false" position="0.00113 0.01045 0.00578" rotation="-0.09568395178684748 -1.7205922587778621 43.90174513630907" depth="0.006" height="0.005" width="0.002"></a-box><a-box class="entity-cart-product" visible="false" position="-0.00257 0.01135 0.0015" rotation="-0.096 0 0" depth="0.016" height="0.005" width="0.002"></a-box><a-box class="entity-cart-product" visible="false" position="0.00204 0.01376 -0.00395" rotation="-0.08651662706475431 0.041252961249419275 -25.603192033215965" depth="0.004" height="0.004" width="0.004"></a-box></a-entity></a-entity></a-entity></a-entity><a-sky src="#sky-image" radius="50"></a-sky><a-plane id="suelo" visible="false" height="100" width="100" rotation="-90 0 0" ammo-body="type: static; " ammo-shape="type: box;"></a-plane></a-scene></div><div id="root"></div></body></html>
